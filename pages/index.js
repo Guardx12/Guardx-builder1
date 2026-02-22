@@ -1,6 +1,433 @@
 import { useMemo, useState } from "react";
-import { IconArrow, IconFacebook, IconGoogle, IconInstagram, IconMail, IconMap, IconPhone, IconStar } from "../components/Icons"; const PHONE = "07000 000000";
-const EMAIL = "studio@apexbuild.co.uk"; function Stars({ count = 5 }) { return ( <span className="stars" aria-label={`${count} stars`}> {Array.from({ length: count }).map((_, i) => ( <IconStar key={i} /> ))} </span> );
-} export default function Home() { const [open, setOpen] = useState(false); const [sent, setSent] = useState(false); const year = useMemo(() => new Date().getFullYear(), []); function onSubmit(e){ e.preventDefault(); // Demo behavior: no data collected setSent(true); setTimeout(() => setSent(false), 3200); } return ( <div> {/* Overlay Menu */} {open ? ( <div className="overlay" role="dialog" aria-modal="true" aria-label="Menu"> <div className="overlayPanel"> <div className="overlayTop"> <h3>Menu</h3> <button className="xbtn" onClick={() => setOpen(false)} aria-label="Close menu">Close</button> </div> <div className="overlayGrid"> <div className="navCard"> <strong>Apex Build Co.</strong> <p>Design-led construction studio. Premium renovations, extensions, and high-finish refurbishments.</p> <div className="navList"> <a href="#projects" onClick={() => setOpen(false)}> Projects <span style={{opacity:.6}}>→</span> </a> <a href="#trust" onClick={() => setOpen(false)}> Trust & accreditations <span style={{opacity:.6}}>→</span> </a> <a href="#reviews" onClick={() => setOpen(false)}> Reviews <span style={{opacity:.6}}>→</span> </a> <a href="#contact" onClick={() => setOpen(false)}> Contact <span style={{opacity:.6}}>→</span> </a> </div> </div> <div className="navCard"> <strong>Speak to the studio</strong> <p>Fast response. Clear scopes. Calm delivery.</p> <div className="divider" /> <div className="stripRow"> <a className="miniLink" href={`tel:+44${PHONE.replace(/\s/g,"")}`}> <IconPhone /> <span>Call</span> {PHONE} </a> <a className="miniLink" href={`mailto:${EMAIL}`}> <IconMail /> <span>Email</span> {EMAIL} </a> </div> <div className="divider" /> <div className="stripRow"> <span className="pill"><span className="dot" /> Fully insured </span> <span className="pill"><span className="dot" /> 4.9 average rating </span> </div> </div> </div> </div> </div> ) : null} {/* HERO */} <section className="hero"> <div className="heroMedia" /> <img src="/images/hero.webp" alt="Modern build" /> <div className="heroShade" /> <div className="topHeader"> <div className="container"> <div className="headerRow"> <div className="wordmark"> <strong>APEX BUILD CO.</strong> <span>Architectural builds • Renovations • Extensions</span> </div> <button className="menuBtn" onClick={() => setOpen(true)} aria-label="Open menu"> <span className="burger" aria-hidden="true"><i/><i/><i/></span> Menu </button> </div> </div> </div> <div className="heroContent"> <div className="container"> <div className="heroGrid"> <div> <span className="pill"><span className="dot" /> Design-led construction studio</span> <h1 className="heroTitle">Built to feel calm — finished to feel premium.</h1> <p className="heroSub"> A modern, architectural builder website demo that showcases range beyond standard trade templates. Clear scopes, tidy sites, and workmanship you can see. </p> <div className="heroActions"> <a className="btn btnPrimary" href="#contact"> Discuss your project <IconArrow /> </a> <a className="btn" href="#projects">View selected projects</a> <a className="btn" href="#trust">Accreditations</a> </div> <p className="fineprint" style={{marginTop:14}}> </p> </div> <div className="contactStrip" aria-label="Quick contact"> <div className="stripGrid"> <div> <div className="stripLabel">Quick contact</div> <div className="stripMain">Arrange a site visit or consultation</div> </div> <div className="stripRow"> <a className="miniLink" href={`tel:+44${PHONE.replace(/\s/g,"")}`}> <IconPhone /> <span>Call</span> {PHONE} </a> <a className="miniLink" href={`mailto:${EMAIL}`}> <IconMail /> <span>Email</span> {EMAIL} </a> </div> <div className="divider" /> <div className="stripRow" style={{justifyContent:"space-between"}}> <div> <div style={{fontSize:12, color:"rgba(245,247,251,0.78)"}}>Average rating </div> <div style={{display:"flex", gap:10, alignItems:"center", marginTop:8}}> <Stars /> <div style={{fontWeight:700}}>4.9</div> <div style={{fontSize:12, color:"rgba(245,247,251,0.55)"}}>138 reviews</div> </div> </div> <span className="pill"><span className="dot" /> Fully insured</span> </div> <div className="divider" /> <div className="stripRow"> <span className="logoBadge" title="Google Reviews "><IconGoogle /> Google Reviews</span> <span className="logoBadge" title="Facebook "><IconFacebook /> Facebook</span> <span className="logoBadge" title="Instagram "><IconInstagram /> Instagram</span> </div> </div> </div> </div> </div> </div> </section> {/* Projects */} <section id="projects" className="section"> <div className="container"> <div className="kicker">Selected projects</div> <h2>A curated selection of recent work.</h2> <p className="lead"> Three distinct visuals and an editorial rhythm — deliberately different from your other demo sites. Replace demo imagery with client-approved photography for real launches. </p> <div className="split" style={{marginTop:28}}> <div className="imgFrame" style={{minHeight:420}}> <img src="/images/project-site.avif" alt="Residential site works " /> </div> <div className="imgFrame" style={{minHeight:420}}> <img src="/images/project-office.avif" alt="Modern fit-out / build " /> </div> </div> <div className="imgFrame" style={{marginTop:18, minHeight:420}}> <img src="/images/project-steel.avif" alt="Steel and structural works " /> </div> </div> </section> {/* Trust + Accreditations */} <section id="trust" className="section sectionAlt"> <div className="container"> <div className="kicker">Trust</div> <h2>Accreditations, certificates and platform presence</h2> <p className="lead"> Presented as a clean studio-style strip (not the same pill grid as the other demos). These are examples for demo realism — real sites should use verified memberships and documents. </p> <div className="logoStrip" aria-label="Accreditations "> <span className="logoBadge">TrustMark</span> <span className="logoBadge">FMB</span> <span className="logoBadge">CHAS</span> <span className="logoBadge">CSCS</span> <span className="logoBadge">Public Liability</span> <span className="logoBadge">Employers’ Liability</span> <span className="logoBadge">Workmanship Guarantee</span> </div> <div className="grid3" style={{marginTop:22}}> <div className="card"> <h3>Clear quoting</h3> <p>Clear inclusions, fixed scope, and documented variations. No “surprise extras”. (Demo copy.)</p> </div> <div className="card"> <h3>Disciplined site standards</h3> <p>Protection, daily clean-down, tidy storage, and structured handover. Built like a showroom.</p> </div> <div className="card"> <h3>Proven reputation</h3> <p>Star ratings, platform presence and consistent customer feedback.</p> </div> </div> </div> </section> {/* Reviews */} <section id="reviews" className="section"> <div className="container"> <div className="kicker">Reviews</div> <h2>Customer feedback</h2> <p className="lead">A few recent reviews from homeowners and private clients.</p> <div className="quotes"> <blockquote> <p>“The finish is exceptional. Every detail considered, every stage professionally managed.”</p> <footer> <Stars /> <span>Google Review</span> <span>— Client, West Sussex </span> </footer> </blockquote> <blockquote> <p>“Clean site, clear comms, and a genuinely calm process. Everything landed on time.”</p> <footer> <Stars /> <span>Facebook Review</span> <span>— Homeowner, Brighton </span> </footer> </blockquote> <blockquote> <p>“A proper team — honest pricing, tidy work, and a snag-free handover.”</p> <footer> <Stars /> <span>Google Review</span> <span>— Client, Horsham </span> </footer> </blockquote> </div> <div className="split" style={{marginTop:28}}> <div className="card"> <h3>Overall rating</h3> <p style={{marginTop:12}}> <span style={{fontSize:34, fontWeight:800, letterSpacing:"-0.02em"}}>4.9</span>{" "} <span style={{color:"rgba(245,247,251,0.58)"}}>average</span> </p> <div style={{marginTop:10}}><Stars /></div> <p style={{marginTop:12}}>Based on 138 reviews across platforms.</p> <div className="logoStrip" style={{marginTop:16}}> <span className="logoBadge"><IconGoogle /> Google</span> <span className="logoBadge"><IconFacebook /> Facebook</span> <span className="logoBadge"><IconInstagram /> Instagram</span> </div> </div> <div className="imgFrame" style={{minHeight:360}}> <img src="/images/brick.webp" alt="Craft detail " /> </div> </div> </div> </section> {/* Contact */} <section id="contact" className="section sectionAlt"> <div className="container"> <div className="kicker">Contact</div> <h2>Discuss your project</h2> <p className="lead"> This demo includes a full contact section (phone, email, and a form) but does not store customer data. On a real client site, submissions would go to a secure inbox/CRM with explicit consent messaging. </p> <div className="split"> <div className="card"> <h3>Contact</h3> <p>Fast response, clear next steps.</p> <div className="logoStrip" style={{marginTop:16}}> <a className="logoBadge" href={`tel:+44${PHONE.replace(/\s/g,"")}`}><IconPhone /> {PHONE}</a> <a className="logoBadge" href={`mailto:${EMAIL}`}><IconMail /> {EMAIL}</a> <span className="logoBadge"><IconMap /> Sussex </span> </div> <p style={{marginTop:16}} className="fineprint"> Prefer WhatsApp? Ask and we’ll switch to whichever channel suits you. </p> </div> <div className="card"> <h3>Contact form</h3> <p>Share a few details and we’ll get back to you.</p> <form onSubmit={onSubmit}> <div className="formGrid"> <div className="field"> <div className="label">Name</div> <input name="name" placeholder="Your name" required /> </div> <div className="field"> <div className="label">Phone</div> <input name="phone" placeholder="07..." required /> </div> <div className="field"> <div className="label">Email</div> <input type="email" name="email" placeholder="you@email.com" required /> </div> <div className="field"> <div className="label">Project type</div> <select name="type" defaultValue="Extension"> <option>Extension</option> <option>Renovation</option> <option>Kitchen / Bathroom</option> <option>Structural work</option> <option>Other</option> </select> </div> <div className="field" style={{gridColumn:"1 / -1"}}> <div className="label">Message</div> <textarea name="message" placeholder="Tell us about your project ..." required /> </div> </div> <div className="formActions"> <button className="btn btnPrimary" type="submit"> Send message <IconArrow /> </button> <span className="fineprint"> {sent ? "✅ Thanks — your message has been sent." : "We aim to reply within 1 business day."} </span> </div> </form> </div> </div> </div> </section> {/* Footer */} <footer className="footer"> <div className="container"> <div className="footerGrid"> <div> <div className="wordmark" style={{gap:6}}> <strong>APEX BUILD CO.</strong> <span>Architectural builds • Renovations • Extensions</span> </div> <div className="socialRow"> <a className="logoBadge" href="#" aria-label="Google "><IconGoogle /> Google</a> <a className="logoBadge" href="#" aria-label="Facebook "><IconFacebook /> Facebook</a> <a className="logoBadge" href="#" aria-label="Instagram "><IconInstagram /> Instagram</a> </div> <p className="small" style={{marginTop:14}}>© {year} Apex Build Co. (Demo)</p> </div> <div> <p className="small"> This is a <strong style={{color:"rgba(245,247,251,0.92)"}}>GuardX showroom example website </strong>. No customer data is collected. Any phone numbers, addresses, reviews, accreditations, and testimonials shown are illustrative only. </p>
-</div> </div> </div> </footer> </div> );
+import {
+  IconArrow,
+  IconFacebook,
+  IconGoogle,
+  IconInstagram,
+  IconMail,
+  IconMap,
+  IconPhone,
+  IconStar,
+} from "../components/Icons";
+
+const PHONE = "07000 000000";
+const EMAIL = "studio@apexbuild.co.uk";
+
+function Stars({ count = 5 }) {
+  return (
+    <span className="stars" aria-label={`${count} stars`}>
+      {Array.from({ length: count }).map((_, i) => (
+        <IconStar key={i} />
+      ))}
+    </span>
+  );
+}
+
+export default function Home() {
+  const [open, setOpen] = useState(false);
+  const [sent, setSent] = useState(false);
+  const year = useMemo(() => new Date().getFullYear(), []);
+
+  function onSubmit(e) {
+    e.preventDefault();
+    setSent(true);
+    setTimeout(() => setSent(false), 3200);
+  }
+
+  return (
+    <div>
+      {/* Overlay Menu */}
+      {open ? (
+        <div className="overlay" role="dialog" aria-modal="true" aria-label="Menu">
+          <div className="overlayPanel">
+            <div className="overlayTop">
+              <h3>Menu</h3>
+              <button className="xbtn" onClick={() => setOpen(false)} aria-label="Close menu">
+                Close
+              </button>
+            </div>
+
+            <div className="overlayGrid">
+              <div className="navCard">
+                <strong>Apex Build Co.</strong>
+                <p>
+                  Design-led construction studio delivering premium renovations, extensions and structural work
+                  for homeowners across Sussex. (Brand copy example.)
+                </p>
+                <div className="navList">
+                  <a href="#projects" onClick={() => setOpen(false)}>
+                    Projects <span style={{ opacity: 0.6 }}>→</span>
+                  </a>
+                  <a href="#trust" onClick={() => setOpen(false)}>
+                    Accreditations <span style={{ opacity: 0.6 }}>→</span>
+                  </a>
+                  <a href="#reviews" onClick={() => setOpen(false)}>
+                    Reviews <span style={{ opacity: 0.6 }}>→</span>
+                  </a>
+                  <a href="#contact" onClick={() => setOpen(false)}>
+                    Contact <span style={{ opacity: 0.6 }}>→</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="navCard">
+                <strong>Speak to the studio</strong>
+                <p>Fast response. Clear scopes. Calm delivery.</p>
+                <div className="divider" />
+                <div className="stripRow">
+                  <a className="miniLink" href={`tel:+44${PHONE.replace(/\s/g, "")}`}>
+                    <IconPhone /> <span>Call</span> {PHONE}
+                  </a>
+                  <a className="miniLink" href={`mailto:${EMAIL}`}>
+                    <IconMail /> <span>Email</span> {EMAIL}
+                  </a>
+                </div>
+                <div className="divider" />
+                <div className="stripRow">
+                  <span className="pill">
+                    <span className="dot" /> Fully insured
+                  </span>
+                  <span className="pill">
+                    <span className="dot" /> 4.9 average rating
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {/* HERO */}
+      <section className="hero">
+        <div className="heroMedia" />
+        <img src="/images/hero.webp" alt="Modern build" />
+        <div className="heroShade" />
+
+        <div className="topHeader">
+          <div className="container">
+            <div className="headerRow">
+              <div className="wordmark">
+                <strong>APEX BUILD CO.</strong>
+                <span>Architectural builds • Renovations • Extensions</span>
+              </div>
+              <button className="menuBtn" onClick={() => setOpen(true)} aria-label="Open menu">
+                <span className="burger" aria-hidden="true">
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                Menu
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="heroContent">
+          <div className="container">
+            <div className="heroGrid">
+              <div>
+                <span className="pill">
+                  <span className="dot" /> Design-led construction studio
+                </span>
+                <h1 className="heroTitle">Built to feel calm — finished to feel premium.</h1>
+                <p className="heroSub">
+                  Clear scope. Disciplined site standards. Meticulous finishing. We work with homeowners who
+                  want a premium result and a smooth process.
+                </p>
+                <div className="heroActions">
+                  <a className="btn btnPrimary" href="#contact">
+                    Discuss your project <IconArrow />
+                  </a>
+                  <a className="btn" href="#projects">
+                    View selected projects
+                  </a>
+                  <a className="btn" href="#trust">
+                    Accreditations
+                  </a>
+                </div>
+              </div>
+
+              <div className="contactStrip" aria-label="Quick contact">
+                <div className="stripGrid">
+                  <div>
+                    <div className="stripLabel">Quick contact</div>
+                    <div className="stripMain">Arrange a site visit or consultation</div>
+                  </div>
+
+                  <div className="stripRow">
+                    <a className="miniLink" href={`tel:+44${PHONE.replace(/\s/g, "")}`}>
+                      <IconPhone /> <span>Call</span> {PHONE}
+                    </a>
+                    <a className="miniLink" href={`mailto:${EMAIL}`}>
+                      <IconMail /> <span>Email</span> {EMAIL}
+                    </a>
+                  </div>
+
+                  <div className="divider" />
+
+                  <div className="stripRow" style={{ justifyContent: "space-between" }}>
+                    <div>
+                      <div style={{ fontSize: 12, color: "rgba(245,247,251,0.78)" }}>Average rating</div>
+                      <div style={{ display: "flex", gap: 10, alignItems: "center", marginTop: 8 }}>
+                        <Stars />
+                        <div style={{ fontWeight: 700 }}>4.9</div>
+                        <div style={{ fontSize: 12, color: "rgba(245,247,251,0.55)" }}>138 reviews</div>
+                      </div>
+                    </div>
+                    <span className="pill">
+                      <span className="dot" /> Fully insured
+                    </span>
+                  </div>
+
+                  <div className="divider" />
+
+                  <div className="stripRow">
+                    <span className="logoBadge" title="Google Reviews">
+                      <IconGoogle /> Google Reviews
+                    </span>
+                    <span className="logoBadge" title="Facebook">
+                      <IconFacebook /> Facebook
+                    </span>
+                    <span className="logoBadge" title="Instagram">
+                      <IconInstagram /> Instagram
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="section">
+        <div className="container">
+          <div className="kicker">Selected projects</div>
+          <h2>A small selection of recent work</h2>
+          <p className="lead">
+            Renovations, structural changes and high-finish interiors. Replace with client-approved photography
+            for live launches.
+          </p>
+
+          <div className="split" style={{ marginTop: 28 }}>
+            <div className="imgFrame" style={{ minHeight: 420 }}>
+              <img src="/images/project-site.avif" alt="Residential site works" />
+            </div>
+            <div className="imgFrame" style={{ minHeight: 420 }}>
+              <img src="/images/project-office.avif" alt="Modern fit-out / build" />
+            </div>
+          </div>
+
+          <div className="imgFrame" style={{ marginTop: 18, minHeight: 420 }}>
+            <img src="/images/project-steel.avif" alt="Steel and structural works" />
+          </div>
+        </div>
+      </section>
+
+      {/* Trust + Accreditations */}
+      <section id="trust" className="section sectionAlt">
+        <div className="container">
+          <div className="kicker">Trust</div>
+          <h2>Accreditations & assurances</h2>
+          <p className="lead">
+            Fully insured, accredited and committed to high standards across every site.
+          </p>
+
+          <div className="logoStrip" aria-label="Accreditations">
+            <span className="logoBadge">TrustMark</span>
+            <span className="logoBadge">FMB</span>
+            <span className="logoBadge">CHAS</span>
+            <span className="logoBadge">CSCS</span>
+            <span className="logoBadge">Public Liability</span>
+            <span className="logoBadge">Employers’ Liability</span>
+            <span className="logoBadge">Workmanship Guarantee</span>
+          </div>
+
+          <div className="grid3" style={{ marginTop: 22 }}>
+            <div className="card">
+              <h3>Clear quoting</h3>
+              <p>Scope-first pricing with inclusions and milestones — variations agreed in writing.</p>
+            </div>
+            <div className="card">
+              <h3>Disciplined site standards</h3>
+              <p>Protection, tidy storage and daily clean-downs. We keep sites calm and organised.</p>
+            </div>
+            <div className="card">
+              <h3>Proven reputation</h3>
+              <p>Star ratings, platform presence and consistent customer feedback.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section id="reviews" className="section">
+        <div className="container">
+          <div className="kicker">Reviews</div>
+          <h2>Customer feedback</h2>
+          <p className="lead">A few recent reviews from homeowners and private clients.</p>
+
+          <div className="quotes">
+            <blockquote>
+              <p>“The finish is exceptional. Every detail considered, every stage professionally managed.”</p>
+              <footer>
+                <Stars /> <span>Google Review</span> <span>— Client, West Sussex</span>
+              </footer>
+            </blockquote>
+
+            <blockquote>
+              <p>“Clean site, clear comms, and a genuinely calm process. Everything landed on time.”</p>
+              <footer>
+                <Stars /> <span>Facebook Review</span> <span>— Homeowner, Brighton</span>
+              </footer>
+            </blockquote>
+
+            <blockquote>
+              <p>“A proper team — honest pricing, tidy work, and a snag-free handover.”</p>
+              <footer>
+                <Stars /> <span>Google Review</span> <span>— Client, Horsham</span>
+              </footer>
+            </blockquote>
+          </div>
+
+          <div className="split" style={{ marginTop: 28 }}>
+            <div className="card">
+              <h3>Overall rating</h3>
+              <p style={{ marginTop: 12 }}>
+                <span style={{ fontSize: 34, fontWeight: 800, letterSpacing: "-0.02em" }}>4.9</span>{" "}
+                <span style={{ color: "rgba(245,247,251,0.58)" }}>average</span>
+              </p>
+              <div style={{ marginTop: 10 }}>
+                <Stars />
+              </div>
+              <p style={{ marginTop: 12 }}>Based on 138 reviews across platforms.</p>
+              <div className="logoStrip" style={{ marginTop: 16 }}>
+                <span className="logoBadge">
+                  <IconGoogle /> Google
+                </span>
+                <span className="logoBadge">
+                  <IconFacebook /> Facebook
+                </span>
+                <span className="logoBadge">
+                  <IconInstagram /> Instagram
+                </span>
+              </div>
+            </div>
+
+            <div className="imgFrame" style={{ minHeight: 360 }}>
+              <img src="/images/brick.webp" alt="Craft detail" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="section sectionAlt">
+        <div className="container">
+          <div className="kicker">Contact</div>
+          <h2>Discuss your project</h2>
+          <p className="lead">Tell us about your project and we’ll come back to you quickly with next steps.</p>
+
+          <div className="split">
+            <div className="card">
+              <h3>Contact</h3>
+              <p>Fast response, clear next steps.</p>
+
+              <div className="logoStrip" style={{ marginTop: 16 }}>
+                <a className="logoBadge" href={`tel:+44${PHONE.replace(/\s/g, "")}`}>
+                  <IconPhone /> {PHONE}
+                </a>
+                <a className="logoBadge" href={`mailto:${EMAIL}`}>
+                  <IconMail /> {EMAIL}
+                </a>
+                <span className="logoBadge">
+                  <IconMap /> Sussex
+                </span>
+              </div>
+            </div>
+
+            <div className="card">
+              <h3>Contact form</h3>
+              <p>Share a few details and we’ll get back to you.</p>
+
+              <form onSubmit={onSubmit}>
+                <div className="formGrid">
+                  <div className="field">
+                    <div className="label">Name</div>
+                    <input name="name" placeholder="Your name" required />
+                  </div>
+                  <div className="field">
+                    <div className="label">Phone</div>
+                    <input name="phone" placeholder="07..." required />
+                  </div>
+                  <div className="field">
+                    <div className="label">Email</div>
+                    <input type="email" name="email" placeholder="you@email.com" required />
+                  </div>
+                  <div className="field">
+                    <div className="label">Project type</div>
+                    <select name="type" defaultValue="Extension">
+                      <option>Extension</option>
+                      <option>Renovation</option>
+                      <option>Kitchen / Bathroom</option>
+                      <option>Structural work</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div className="field" style={{ gridColumn: "1 / -1" }}>
+                    <div className="label">Message</div>
+                    <textarea name="message" placeholder="Tell us about your project..." required />
+                  </div>
+                </div>
+
+                <div className="formActions">
+                  <button className="btn btnPrimary" type="submit">
+                    Send message <IconArrow />
+                  </button>
+                  <span className="fineprint">
+                    {sent ? "✅ Thanks — your message has been sent." : "We aim to reply within 1 business day."}
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container">
+          <div className="footerGrid">
+            <div>
+              <div className="wordmark" style={{ gap: 6 }}>
+                <strong>APEX BUILD CO.</strong>
+                <span>Architectural builds • Renovations • Extensions</span>
+              </div>
+              <div className="socialRow">
+                <a className="logoBadge" href="#" aria-label="Google">
+                  <IconGoogle /> Google
+                </a>
+                <a className="logoBadge" href="#" aria-label="Facebook">
+                  <IconFacebook /> Facebook
+                </a>
+                <a className="logoBadge" href="#" aria-label="Instagram">
+                  <IconInstagram /> Instagram
+                </a>
+              </div>
+              <p className="small" style={{ marginTop: 14 }}>
+                © {year} Apex Build Co.
+              </p>
+            </div>
+
+            <div>
+              <p className="small">
+                This is a <strong style={{ color: "rgba(245,247,251,0.92)" }}>GuardX showroom example website (demo)</strong>. No customer data is collected.
+                Any phone numbers, addresses, reviews, accreditations, and testimonials shown are illustrative only.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
 }
