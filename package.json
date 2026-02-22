@@ -1,7 +1,7 @@
-
 {
-  "name": "apex-elite-build",
+  "name": "guardx-builder-agency-demo",
   "private": true,
+  "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,5 +11,10 @@
     "next": "14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.14"
   }
 }
