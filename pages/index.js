@@ -1,6 +1,6 @@
-import LogoPill from "@/components/LogoPill";
-import ReviewCard from "@/components/ReviewCard";
-import StarRow from "@/components/StarRow";
+import LogoPill from "../components/LogoPill";
+import ReviewCard from "../components/ReviewCard";
+import StarRow from "../components/StarRow";
 
 const reviews = [
   {
@@ -42,7 +42,6 @@ const faqs = [
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Top utility bar */}
       <div className="border-b border-white/10 bg-zinc-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 text-xs sm:px-6 lg:px-8">
           <a href="#" className="text-zinc-300 hover:text-white no-underline">← Back to examples</a>
@@ -55,7 +54,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Header */}
       <header className="sticky top-0 z-40 border-b border-white/10 bg-zinc-950/60 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
@@ -81,7 +79,6 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 hero-bg opacity-30" />
         <div className="absolute inset-0 bg-[radial-gradient(70%_50%_at_50%_0%,rgba(245,158,11,0.18),transparent_60%),radial-gradient(50%_40%_at_85%_15%,rgba(59,130,246,0.14),transparent_60%)]" />
@@ -163,7 +160,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quote CTA strip */}
       <section id="quote" className="border-y border-white/10 bg-zinc-950/70">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-3 lg:items-center">
@@ -197,7 +193,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Accreditations */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -226,7 +221,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services */}
       <section id="services" className="border-y border-white/10 bg-zinc-950/50">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
@@ -294,7 +288,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Work */}
       <section id="work" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-200">
@@ -323,7 +316,6 @@ export default function Home() {
         <div className="mt-8 text-xs text-zinc-500">Images provided for demo purposes.</div>
       </section>
 
-      {/* Areas */}
       <section id="areas" className="border-y border-white/10 bg-zinc-950/50">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
@@ -347,7 +339,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Reviews */}
       <section id="reviews" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
@@ -396,7 +387,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section id="pricing" className="border-t border-white/10 bg-zinc-950/50">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
@@ -421,7 +411,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="border-t border-white/10 bg-zinc-950">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-8 md:flex-row md:justify-between">

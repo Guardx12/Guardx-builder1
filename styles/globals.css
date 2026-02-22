@@ -7,7 +7,6 @@ html, body { height: 100%; }
 body { @apply bg-zinc-950 text-zinc-50 antialiased; }
 a { @apply underline-offset-4; }
 
-/* subtle grid + glow */
 .hero-bg {
   background-image:
     radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
