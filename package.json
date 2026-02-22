@@ -1,6 +1,6 @@
 
 {
-  "name": "apex-build-demo",
+  "name": "apex-elite-build",
   "private": true,
   "scripts": {
     "dev": "next dev",
