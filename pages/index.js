@@ -1,63 +1,394 @@
+import { useMemo, useState } from "react";
+import { IconArrow, IconFacebook, IconGoogle, IconInstagram, IconMail, IconMap, IconPhone, IconStar } from "../components/Icons";
+
+const PHONE = "07000 000000";
+const EMAIL = "studio@apexbuild.co.uk";
+
+function Stars({ count = 5 }) {
+  return (
+    <span className="stars" aria-label={`${count} stars`}>
+      {Array.from({ length: count }).map((_, i) => (
+        <IconStar key={i} />
+      ))}
+    </span>
+  );
+}
 
 export default function Home() {
+  const [open, setOpen] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const year = useMemo(() => new Date().getFullYear(), []);
+
+  function onSubmit(e){
+    e.preventDefault();
+    // Demo behavior: no data collected
+    setSent(true);
+    setTimeout(() => setSent(false), 3200);
+  }
+
   return (
     <div>
+      {/* Overlay Menu */}
+      {open ? (
+        <div className="overlay" role="dialog" aria-modal="true" aria-label="Menu">
+          <div className="overlayPanel">
+            <div className="overlayTop">
+              <h3>Menu</h3>
+              <button className="xbtn" onClick={() => setOpen(false)} aria-label="Close menu">Close</button>
+            </div>
 
+            <div className="overlayGrid">
+              <div className="navCard">
+                <strong>Apex Build Co.</strong>
+                <p>Design-led construction studio. Premium renovations, extensions, and high-finish refurbishments. (Demo brand copy.)</p>
+                <div className="navList">
+                  <a href="#projects" onClick={() => setOpen(false)}>
+                    Projects <span style={{opacity:.6}}>→</span>
+                  </a>
+                  <a href="#trust" onClick={() => setOpen(false)}>
+                    Trust & accreditations <span style={{opacity:.6}}>→</span>
+                  </a>
+                  <a href="#reviews" onClick={() => setOpen(false)}>
+                    Reviews <span style={{opacity:.6}}>→</span>
+                  </a>
+                  <a href="#contact" onClick={() => setOpen(false)}>
+                    Contact <span style={{opacity:.6}}>→</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="navCard">
+                <strong>Speak to the studio</strong>
+                <p>Fast response. Clear scopes. Calm delivery. This demo includes a contact form, but no data is stored.</p>
+                <div className="divider" />
+                <div className="stripRow">
+                  <a className="miniLink" href={`tel:+44${PHONE.replace(/\s/g,"")}`}>
+                    <IconPhone />
+                    <span>Call</span> {PHONE}
+                  </a>
+                  <a className="miniLink" href={`mailto:${EMAIL}`}>
+                    <IconMail />
+                    <span>Email</span> {EMAIL}
+                  </a>
+                </div>
+                <div className="divider" />
+                <div className="stripRow">
+                  <span className="pill"><span className="dot" /> Fully insured (demo)</span>
+                  <span className="pill"><span className="dot" /> 4.9 average rating (demo)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {/* HERO */}
       <section className="hero">
-        <img src="/images/hero.webp" alt="Architectural build" />
-        <div className="minimal-header">
-          <div>Apex Build Co.</div>
-          <div>Menu</div>
+        <div className="heroMedia" />
+        <img src="/images/hero.webp" alt="Modern build" />
+        <div className="heroShade" />
+
+        <div className="topHeader">
+          <div className="container">
+            <div className="headerRow">
+              <div className="wordmark">
+                <strong>APEX BUILD CO.</strong>
+                <span>Architectural builds • Renovations • Extensions</span>
+              </div>
+              <button className="menuBtn" onClick={() => setOpen(true)} aria-label="Open menu">
+                <span className="burger" aria-hidden="true"><i/><i/><i/></span>
+                Menu
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="hero-overlay">
-          <h1 style={{fontSize:'64px',fontWeight:300,marginBottom:'20px'}}>
-            Designed. Built. Enduring.
-          </h1>
-          <p style={{maxWidth:'700px',fontSize:'20px',opacity:0.85}}>
-            A design-led construction studio delivering premium residential builds and architectural renovations.
+
+        <div className="heroContent">
+          <div className="container">
+            <div className="heroGrid">
+              <div>
+                <span className="pill"><span className="dot" /> Design-led construction studio</span>
+                <h1 className="heroTitle">Built to feel calm — finished to feel premium.</h1>
+                <p className="heroSub">
+                  A modern, architectural builder website demo that showcases range beyond standard trade templates.
+                  Clear scopes, tidy sites, and workmanship you can see.
+                </p>
+                <div className="heroActions">
+                  <a className="btn btnPrimary" href="#contact">
+                    Discuss your project <IconArrow />
+                  </a>
+                  <a className="btn" href="#projects">View selected projects</a>
+                  <a className="btn" href="#trust">Accreditations</a>
+                </div>
+                <p className="fineprint" style={{marginTop:14}}>
+                  Demo website: the contact form does not store or transmit customer data. Buttons/links are illustrative.
+                </p>
+              </div>
+
+              <div className="contactStrip" aria-label="Quick contact">
+                <div className="stripGrid">
+                  <div>
+                    <div className="stripLabel">Quick contact</div>
+                    <div className="stripMain">Arrange a site visit or consultation</div>
+                  </div>
+
+                  <div className="stripRow">
+                    <a className="miniLink" href={`tel:+44${PHONE.replace(/\s/g,"")}`}>
+                      <IconPhone /> <span>Call</span> {PHONE}
+                    </a>
+                    <a className="miniLink" href={`mailto:${EMAIL}`}>
+                      <IconMail /> <span>Email</span> {EMAIL}
+                    </a>
+                  </div>
+
+                  <div className="divider" />
+
+                  <div className="stripRow" style={{justifyContent:"space-between"}}>
+                    <div>
+                      <div style={{fontSize:12, color:"rgba(245,247,251,0.78)"}}>Average rating (demo)</div>
+                      <div style={{display:"flex", gap:10, alignItems:"center", marginTop:8}}>
+                        <Stars />
+                        <div style={{fontWeight:700}}>4.9</div>
+                        <div style={{fontSize:12, color:"rgba(245,247,251,0.55)"}}>138 reviews</div>
+                      </div>
+                    </div>
+                    <span className="pill"><span className="dot" /> Fully insured</span>
+                  </div>
+
+                  <div className="divider" />
+
+                  <div className="stripRow">
+                    <span className="logoBadge" title="Google Reviews (demo)"><IconGoogle /> Google Reviews</span>
+                    <span className="logoBadge" title="Facebook (demo)"><IconFacebook /> Facebook</span>
+                    <span className="logoBadge" title="Instagram (demo)"><IconInstagram /> Instagram</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="section">
+        <div className="container">
+          <div className="kicker">Selected projects</div>
+          <h2>Image-led presentation, with real trust underneath.</h2>
+          <p className="lead">
+            Three distinct visuals and an editorial rhythm — deliberately different from your other demo sites.
+            Replace demo imagery with client-approved photography for real launches.
           </p>
-        </div>
-      </section>
 
-      <section className="section dark-section">
-        <h2 style={{fontSize:'36px',fontWeight:400}}>Selected Projects</h2>
-        <div className="projects">
-          <div className="project-card">
-            <img src="/images/hero.webp" alt="Project" />
-            <h3 style={{marginTop:'20px'}}>Contemporary Extension</h3>
-            <p style={{opacity:0.6}}>Brighton — Residential</p>
+          <div className="split" style={{marginTop:28}}>
+            <div className="imgFrame" style={{minHeight:420}}>
+              <img src="/images/project-site.avif" alt="Residential site works (demo)" />
+            </div>
+            <div className="imgFrame" style={{minHeight:420}}>
+              <img src="/images/project-office.avif" alt="Modern fit-out / build (demo)" />
+            </div>
           </div>
-          <div className="project-card">
-            <img src="/images/hero.webp" alt="Project" />
-            <h3 style={{marginTop:'20px'}}>Architectural Renovation</h3>
-            <p style={{opacity:0.6}}>Horsham — Private Client</p>
+
+          <div className="imgFrame" style={{marginTop:18, minHeight:420}}>
+            <img src="/images/project-steel.avif" alt="Steel and structural works (demo)" />
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="quote-block">
-          “The finish is exceptional. Every detail considered, every stage professionally managed.”
-          <div style={{marginTop:'20px',fontSize:'16px',opacity:0.6}}>— Client, West Sussex (Demo)</div>
+      {/* Trust + Accreditations */}
+      <section id="trust" className="section sectionAlt">
+        <div className="container">
+          <div className="kicker">Trust</div>
+          <h2>Accreditations, certificates and platform presence</h2>
+          <p className="lead">
+            Presented as a clean studio-style strip (not the same pill grid as the other demos).
+            These are examples for demo realism — real sites should use verified memberships and documents.
+          </p>
+
+          <div className="logoStrip" aria-label="Accreditations (demo)">
+            <span className="logoBadge">TrustMark</span>
+            <span className="logoBadge">FMB</span>
+            <span className="logoBadge">CHAS</span>
+            <span className="logoBadge">CSCS</span>
+            <span className="logoBadge">Public Liability</span>
+            <span className="logoBadge">Employers’ Liability</span>
+            <span className="logoBadge">Workmanship Guarantee</span>
+          </div>
+
+          <div className="grid3" style={{marginTop:22}}>
+            <div className="card">
+              <h3>Transparent quoting</h3>
+              <p>Clear inclusions, fixed scope, and documented variations. No “surprise extras”. (Demo copy.)</p>
+            </div>
+            <div className="card">
+              <h3>Disciplined site standards</h3>
+              <p>Protection, daily clean-down, tidy storage, and structured handover. Built like a showroom.</p>
+            </div>
+            <div className="card">
+              <h3>Verified social proof</h3>
+              <p>Star ratings, platform badges and review presentation that matches your plumbing demo style — but in a new layout.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="section dark-section">
-        <h2 style={{fontSize:'36px',fontWeight:400}}>Studio Approach</h2>
-        <p style={{maxWidth:'700px',marginTop:'30px',lineHeight:'1.6',opacity:0.8}}>
-          We operate as a collaborative construction studio. Structured planning, disciplined site management,
-          and meticulous finishing standards define every project. This demo layout intentionally avoids
-          typical trade-site structures to showcase design range.
-        </p>
+      {/* Reviews */}
+      <section id="reviews" className="section">
+        <div className="container">
+          <div className="kicker">Reviews</div>
+          <h2>Customer feedback (demo)</h2>
+          <p className="lead">Editorial quote blocks with star rows — proof-heavy without feeling like the same template.</p>
+
+          <div className="quotes">
+            <blockquote>
+              <p>“The finish is exceptional. Every detail considered, every stage professionally managed.”</p>
+              <footer>
+                <Stars /> <span>Google Review</span> <span>— Client, West Sussex (demo)</span>
+              </footer>
+            </blockquote>
+
+            <blockquote>
+              <p>“Clean site, clear comms, and a genuinely calm process. Everything landed on time.”</p>
+              <footer>
+                <Stars /> <span>Facebook Review</span> <span>— Homeowner, Brighton (demo)</span>
+              </footer>
+            </blockquote>
+
+            <blockquote>
+              <p>“A proper team — honest pricing, tidy work, and a snag-free handover.”</p>
+              <footer>
+                <Stars /> <span>Google Review</span> <span>— Client, Horsham (demo)</span>
+              </footer>
+            </blockquote>
+          </div>
+
+          <div className="split" style={{marginTop:28}}>
+            <div className="card">
+              <h3>Overall rating (demo)</h3>
+              <p style={{marginTop:12}}>
+                <span style={{fontSize:34, fontWeight:800, letterSpacing:"-0.02em"}}>4.9</span>{" "}
+                <span style={{color:"rgba(245,247,251,0.58)"}}>average</span>
+              </p>
+              <div style={{marginTop:10}}><Stars /></div>
+              <p style={{marginTop:12}}>Based on 138 reviews across platforms (demo).</p>
+              <div className="logoStrip" style={{marginTop:16}}>
+                <span className="logoBadge"><IconGoogle /> Google</span>
+                <span className="logoBadge"><IconFacebook /> Facebook</span>
+                <span className="logoBadge"><IconInstagram /> Instagram</span>
+              </div>
+            </div>
+
+            <div className="imgFrame" style={{minHeight:360}}>
+              <img src="/images/brick.webp" alt="Craft detail (demo)" />
+            </div>
+          </div>
+        </div>
       </section>
 
+      {/* Contact */}
+      <section id="contact" className="section sectionAlt">
+        <div className="container">
+          <div className="kicker">Contact</div>
+          <h2>Discuss your project</h2>
+          <p className="lead">
+            This demo includes a full contact section (phone, email, and a form) but does not store customer data.
+            On a real client site, submissions would go to a secure inbox/CRM with explicit consent messaging.
+          </p>
+
+          <div className="split">
+            <div className="card">
+              <h3>Direct lines</h3>
+              <p>Fast response, clear next steps. (Demo contact details.)</p>
+
+              <div className="logoStrip" style={{marginTop:16}}>
+                <a className="logoBadge" href={`tel:+44${PHONE.replace(/\s/g,"")}`}><IconPhone /> {PHONE}</a>
+                <a className="logoBadge" href={`mailto:${EMAIL}`}><IconMail /> {EMAIL}</a>
+                <span className="logoBadge"><IconMap /> Sussex (demo)</span>
+              </div>
+
+              <p style={{marginTop:16}} className="fineprint">
+                Prefer WhatsApp? Add a WhatsApp button here on real builds. This demo keeps it simple.
+              </p>
+            </div>
+
+            <div className="card">
+              <h3>Contact form (demo)</h3>
+              <p>No data is stored. Submitting shows a demo confirmation only.</p>
+
+              <form onSubmit={onSubmit}>
+                <div className="formGrid">
+                  <div className="field">
+                    <div className="label">Name</div>
+                    <input name="name" placeholder="Your name" required />
+                  </div>
+                  <div className="field">
+                    <div className="label">Phone</div>
+                    <input name="phone" placeholder="07..." required />
+                  </div>
+                  <div className="field">
+                    <div className="label">Email</div>
+                    <input type="email" name="email" placeholder="you@email.com" required />
+                  </div>
+                  <div className="field">
+                    <div className="label">Project type</div>
+                    <select name="type" defaultValue="Extension">
+                      <option>Extension</option>
+                      <option>Renovation</option>
+                      <option>Kitchen / Bathroom</option>
+                      <option>Structural work</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div className="field" style={{gridColumn:"1 / -1"}}>
+                    <div className="label">Message</div>
+                    <textarea name="message" placeholder="Tell us about your project (demo)..." required />
+                  </div>
+                </div>
+
+                <div className="formActions">
+                  <button className="btn btnPrimary" type="submit">
+                    Send message (demo) <IconArrow />
+                  </button>
+                  <span className="fineprint">
+                    {sent ? "✅ Demo submitted. No data collected." : "No tracking. No storage. Demo-only submission."}
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
       <footer className="footer">
-        <p>
-          This is a GuardX showroom example website (demo). No customer data is collected.
-          All projects, testimonials and details shown are illustrative only.
-        </p>
-      </footer>
+        <div className="container">
+          <div className="footerGrid">
+            <div>
+              <div className="wordmark" style={{gap:6}}>
+                <strong>APEX BUILD CO.</strong>
+                <span>Architectural builds • Renovations • Extensions</span>
+              </div>
+              <div className="socialRow">
+                <a className="logoBadge" href="#" aria-label="Google (demo)"><IconGoogle /> Google</a>
+                <a className="logoBadge" href="#" aria-label="Facebook (demo)"><IconFacebook /> Facebook</a>
+                <a className="logoBadge" href="#" aria-label="Instagram (demo)"><IconInstagram /> Instagram</a>
+              </div>
+              <p className="small" style={{marginTop:14}}>© {year} Apex Build Co. (Demo)</p>
+            </div>
 
+            <div>
+              <p className="small">
+                This is a <strong style={{color:"rgba(245,247,251,0.92)"}}>GuardX showroom example website (demo)</strong>. No customer data is collected.
+                Any phone numbers, addresses, reviews, accreditations, and testimonials shown are illustrative only.
+              </p>
+              <p className="small" style={{marginTop:12}}>
+                Demo contact form does not store or transmit data — it only displays an on-page confirmation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
-  )
+  );
 }
