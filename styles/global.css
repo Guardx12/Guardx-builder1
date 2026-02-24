@@ -56,7 +56,11 @@ a{ color:inherit; text-decoration:none; }
 .heroShade{ position:absolute; inset:0; background: linear-gradient(to top, rgba(11,15,20,0.92), rgba(11,15,20,0.25) 55%, rgba(11,15,20,0.10)); }
 .topHeader{
   position:absolute; left:0; right:0; top:0; z-index:20;
-  padding:26px 0;
+  /*
+    Allow for iOS safe-area (notch) so the wordmark never sits half off-screen.
+    Browsers that don't support env() will ignore it.
+  */
+  padding: calc(26px + env(safe-area-inset-top)) 0 26px 0;
 }
 .headerRow{
   display:flex; align-items:center; justify-content:space-between;
@@ -281,12 +285,20 @@ textarea{ min-height: 120px; resize: vertical; }
   .footerGrid{ grid-template-columns:1fr; }
   .overlayGrid{ grid-template-columns:1fr; }
   .formGrid{ grid-template-columns:1fr; }
-  .topHeader{ padding:18px 0; }
+  .topHeader{ padding: calc(18px + env(safe-area-inset-top)) 0 18px 0; }
   .wordmark span{ max-width: 52vw; }
 
   /*
     Mobile: the hero copy can grow tall enough to collide with the header.
     Reserve space for the header so the first paragraph never sits underneath it.
   */
-  .heroContent{ padding-top: 110px; padding-bottom: 46px; }
+  /*
+    Mobile: avoid the hero headline colliding with the absolute header.
+    On small viewports the hero content can be taller than the available height,
+    so we anchor it to the top with a guaranteed header offset and slightly
+    tighten typography.
+  */
+  .heroContent{ align-items:flex-start; padding-top: 124px; padding-bottom: 46px; }
+  .heroGrid{ align-items:start; }
+  .heroTitle{ font-size: clamp(34px, 9vw, 56px); }
 }
