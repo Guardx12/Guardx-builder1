@@ -130,10 +130,6 @@ export default function Home() {
                   <span className="dot" /> Design-led construction studio
                 </span>
                 <h1 className="heroTitle">Built to feel calm — finished to feel premium.</h1>
-                <p className="heroSub">
-                  Clear scope. Disciplined site standards. Meticulous finishing. We work with homeowners who
-                  want a premium result and a smooth process.
-                </p>
                 <div className="heroActions">
                   <a className="btn btnPrimary" href="#contact">
                     Discuss your project <IconArrow />
